@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class BusinessTest {
+	DataService dataService;
 	@Test
 	public void calculateSum_basic(){
 		BusinessImpl business = new BusinessImpl();

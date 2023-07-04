@@ -1,7 +1,17 @@
 package com.example.unittesting;
 
+import lombok.Data;
+import org.springframework.stereotype.Service;
+
+@Service
+@Data
 public class BusinessImpl {
 	private DataService dataService;
+
+//	public void setDataService(DataService dataService) {
+//		this.dataService=dataService;
+//	}
+
 	public int calculateSum(int [] data){
 		int sum =0;
 		for(int value:data){
@@ -32,10 +42,5 @@ public class BusinessImpl {
 			sum += value;
 		}
 		return sum;
-	}
-
-
-	public void setDataService(DataService dataService) {
-		this.dataService=dataService;
 	}
 }

@@ -21,7 +21,7 @@ class DataServiceStub implements DataService {
 public class BusinessStubTest {
 	DataService dataService;
 	@Test
-	public void calculateSumUsingDataService(){
+	public void calculateSumUsingDataService_basic(){
 		BusinessImpl business = new BusinessImpl();
 		business.setDataService(new DataServiceStub());
 		int actualResult = business.calculateSumUsingDataService();
