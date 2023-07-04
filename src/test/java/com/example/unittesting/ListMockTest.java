@@ -7,6 +7,7 @@ import org.mockito.Mockito;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.when;
 
 public class ListMockTest {
@@ -29,6 +30,11 @@ public class ListMockTest {
 		assertEquals("in20mins",mock.get(0));
 		//in position 0 to return "in20mins" else return null for other positions
 		assertEquals(null,mock.get(1));
-
+	}
+	@Test
+	public void returnWithGenericParameters(){
+		when(mock.get(anyInt())).thenReturn("in20mins");
+		assertEquals("in20mins",mock.get(0));
+		assertEquals("in20mins",mock.get(1));
 	}
 }
