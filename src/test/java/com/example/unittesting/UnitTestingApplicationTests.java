@@ -14,6 +14,9 @@ import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.RequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
+
+import java.util.Arrays;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
@@ -74,7 +77,20 @@ class UnitTestingApplicationTests {
 				.andExpect(status().isOk())
 				.andExpect(content().string("{\"id\":1,\"name\":\"Ball\",\"price\":10,\"quantity\":100}"))
 				.andReturn();
+	}
+	@Test
+	public void retrieveAllItems_basic() throws Exception {
+		when(itemBusinessService.retrieveAllItems()).thenReturn(
+				(Arrays.asList(new Item(1, "Item2", 10, 100),
+						        new Item (3, "Item3", 10,100))));
+				//build GET request
+				RequestBuilder request = MockMvcRequestBuilders.
+				get("/all-items-from-database").
+				accept(MediaType.APPLICATION_JSON);
 
-
+				MvcResult result = mockMvc.perform(request)
+				.andExpect(status().isOk())
+				.andExpect(content().json("[{\"id\":1,\"name\":\"Item2\",\"price\":10,\"quantity\":100},{\"id\":3,\"name\":\"Item3\",\"price\":10,\"quantity\":100}]"))
+				.andReturn();
 	}
 }
