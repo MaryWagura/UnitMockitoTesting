@@ -24,4 +24,9 @@ public class HelloWorldController {
 		return new Item(1, "Ball", 10, 100);
 	}
 
+	@GetMapping("/dummy-items1")
+	public Item dummyItems1(){
+		return new Item(1, "Ball", 10, 100);
+	}
+
 }
