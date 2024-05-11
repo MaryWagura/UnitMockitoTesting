@@ -16,7 +16,7 @@ public class ItemControllerIT {
     @Autowired
     private TestRestTemplate restTemplate;
 
-    @MockBean //to mock out external dependancies
+    @MockBean //to mock out external dependencies
     private ItemRepository itemRepository;
     @Test
     public void contextLoads() throws JSONException {
